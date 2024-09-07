@@ -73,6 +73,10 @@ async def handle_web_app_data(message: types.Message):
 def registration():
     return render_template('registration.html')
 
+@app.route('/')
+def index():
+    return "Hello, this is your Telegram WebApp!"
+
 # Асинхронный запуск бота
 async def main():
     await dp.start_polling(bot)
