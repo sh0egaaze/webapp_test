@@ -47,10 +47,10 @@ def register_or_update_user(full_name, short_name):
         wb.save(EXCEL_FILE)
         return True
 
-# Отправка кнопки WebApp в боте
+# Отправка кнопки WebApp в ботe
 @dp.message_handler(commands=['start'])
 async def start(message: types.Message):
-    web_app_button = InlineKeyboardButton('Открыть форму', web_app=types.WebAppInfo(url='https://ваш_домен/registration'))
+    web_app_button = InlineKeyboardButton('Открыть форму', web_app=types.WebAppInfo(url='https://webapp-test-six.vercel.app/registration'))
     keyboard = InlineKeyboardMarkup().add(web_app_button)
     await message.answer("Нажмите кнопку для регистрации:", reply_markup=keyboard)
 
