@@ -1,6 +1,7 @@
 import asyncio
 from aiogram import Bot, Dispatcher, types
-from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+from aiogram.utils import executor
+from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
 from flask import Flask, render_template
 from openpyxl import load_workbook, Workbook
 import os
@@ -10,7 +11,7 @@ TOKEN = '7328618398:AAGR4xh0kI6GL_d-nzm5Wc_GopFYGcP2hRM'
 
 # Инициализация бота
 bot = Bot(token=TOKEN)
-dp = Dispatcher()
+dp = Dispatcher(bot)
 
 # Flask приложение для сервера
 app = Flask(__name__)
@@ -78,8 +79,7 @@ async def main():
 
 # Запуск Flask и бота
 if __name__ == '__main__':
-    import threading
-    threading.Thread(target=lambda: app.run(host='0.0.0.0', port=5000)).start()
+    app.run()
 
     # Запуск бота в асинхронном режиме
     asyncio.run(main())
