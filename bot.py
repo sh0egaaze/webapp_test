@@ -76,14 +76,3 @@ def registration():
 @app.route('/')
 def index():
     return "Hello, this is your Telegram WebApp!"
-
-# Асинхронный запуск бота
-async def main():
-    await dp.start_polling(bot)
-
-# Запуск Flask и бота
-if __name__ == '__main__':
-    app.run()
-
-    # Запуск бота в асинхронном режиме
-    asyncio.run(main())
